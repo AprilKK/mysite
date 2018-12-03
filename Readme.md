@@ -27,11 +27,10 @@ WSGI相当于是Web服务器和Python应用程序之间的桥梁。那么这个�
 │   ├── admin.pyc
 │   ├── apps.py
 │   ├── migrations
-│   │   └── __init__.py
 │   ├── models.py
 │   ├── models.pyc
+│   ├── static //这是app 独有的static 静态文件，
 │   ├── templates
-│   │   └── home.html
 │   ├── tests.py
 │   ├── views.py
 │   └── views.pyc
@@ -40,19 +39,22 @@ WSGI相当于是Web服务器和Python应用程序之间的桥梁。那么这个�
 │   ├── __init__.py
 │   ├── __init__.pyc
 │   ├── media
-│   │   └── media.png
 │   ├── settings.py
 │   ├── settings.pyc
-│   ├── static
 │   ├── urls.py
 │   ├── urls.pyc
 │   ├── wsgi.py
 │   └── wsgi.pyc
 ├── mysite_nginx.conf
 ├── mysite_uwsgi.ini
+├── static // 这是整个project的静态文件，当运行`python manage.py collectstatic` 时，会把所有app的静态文件统一收集到这个下面，所以当有静态文件更新时，应该运行一次上面的指令
+│   ├── admin
+│   ├── assets
+│   └── images
 ├── test.py
 ├── uwsgi.log
 └── uwsgi_params
+
 ```
 ### 配置文件
 - `mysite_nginx.conf` 是Nginx的配置文件，需要将这个文件链接到`/etc/nginx/sites-enbaled`, 这样nginx就可以看到这个配置文件了,[refer][1]
@@ -119,7 +121,11 @@ exec /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-
 ### 代码逻辑
 - helloDjango 是项目的主要代码，里面的`views.py` 是定义view的地方
 - templates 文件夹是放置template的位置，这个位置要在`mysite/settings.py`中指出，告诉django去哪里寻找template
-
+### 静态文件
+每个app应该有自己的静态文件夹，它与templates文件夹处于同一级别。
+在`/mysite/settings.py`中设置 `STATIC_URL` 和 `STATIC_ROOT` ，其中
+- STATIC_URL 告诉django应该去每个app下的哪个文件夹寻找静态文件，
+- STATIC_ROOT 告诉Django 在运行 `python manage.py collectstatic` 指令时应该在根目录生成哪个文件夹，并且该文件夹作为产线上使用的静态文件位置。
 
 ## Reference
 [1]: https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/tutorials/Django_and_nginx.html
