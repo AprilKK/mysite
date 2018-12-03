@@ -1,0 +1,54 @@
+*** Starting uWSGI 2.0.17.1 (64bit) on [Mon Dec  3 06:24:04 2018] ***
+compiled with version: 7.3.0 on 29 November 2018 08:22:48
+os: Linux-4.15.0-1032-azure #33-Ubuntu SMP Fri Nov 9 13:25:13 UTC 2018
+nodename: MyAzureVMServer
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/xikong/mysite
+detected binary path: /home/xikong/.local/bin/uwsgi
+chdir() to /home/xikong/mysite
+your processes number limit is 31823
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (:8001).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.17.1 (64bit) on [Mon Dec  3 07:03:00 2018] ***
+compiled with version: 7.3.0 on 29 November 2018 08:22:48
+os: Linux-4.15.0-1032-azure #33-Ubuntu SMP Fri Nov 9 13:25:13 UTC 2018
+nodename: MyAzureVMServer
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/xikong/mysite
+detected binary path: /home/xikong/.local/bin/uwsgi
+chdir() to /home/xikong/mysite
+your processes number limit is 31823
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Mon Dec  3 07:03:00 2018] ***
+compiled with version: 7.3.0 on 29 November 2018 08:22:48
+os: Linux-4.15.0-1032-azure #33-Ubuntu SMP Fri Nov 9 13:25:13 UTC 2018
+nodename: MyAzureVMServer
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/xikong/mysite
+detected binary path: /home/xikong/.local/bin/uwsgi
+chdir() to /home/xikong/mysite
+your processes number limit is 31823
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (:8001).
+bind(): Address already in use [core/socket.c line 769]
+probably another instance of uWSGI is running on the same address (:8001).
+bind(): Address already in use [core/socket.c line 769]
