@@ -55,7 +55,7 @@ WSGI相当于是Web服务器和Python应用程序之间的桥梁。那么这个�
 └── uwsgi_params
 ```
 ### 配置文件
-- `mysite_nginx.conf` 是Nginx的配置文件，需要将这个文件链接到`/etc/nginx/sites-enbaled`, 这样nginx就可以看到这个配置文件了
+- `mysite_nginx.conf` 是Nginx的配置文件，需要将这个文件链接到`/etc/nginx/sites-enbaled`, 这样nginx就可以看到这个配置文件了,[refer][1]
 ```
 sudo ln -s /home/xikong/mysite/mysite_nginx.conf /etc/nginx/sites-enabled/
 ```
@@ -119,3 +119,7 @@ exec /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-
 ### 代码逻辑
 - helloDjango 是项目的主要代码，里面的`views.py` 是定义view的地方
 - templates 文件夹是放置template的位置，这个位置要在`mysite/settings.py`中指出，告诉django去哪里寻找template
+
+
+## Reference
+[1]: https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/tutorials/Django_and_nginx.html
