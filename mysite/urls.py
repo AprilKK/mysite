@@ -20,5 +20,6 @@ from helloDjango import views as hviews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^dev/$',hviews.index,name='dev'),
+    url(r'^blog/$',hviews.blog,name='blog'),
     url(r'^$',hviews.stable,name='stable'),
 ]
