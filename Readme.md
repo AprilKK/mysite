@@ -126,6 +126,15 @@ exec /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-
 在`/mysite/settings.py`中设置 `STATIC_URL` 和 `STATIC_ROOT` ，其中
 - STATIC_URL 告诉django应该去每个app下的哪个文件夹寻找静态文件，
 - STATIC_ROOT 告诉Django 在运行 `python manage.py collectstatic` 指令时应该在根目录生成哪个文件夹，并且该文件夹作为产线上使用的静态文件位置。
+### 数据库操作
+
+在Django中数据库的操作由 `model.py`来完成. 里面的一个类代表一张表
+当对model.py更新以后，需要运行以下命令，使数据库定义得到更新：
+```
+# Django 1.7 及以上的版本需要用以下命令
+python manage.py makemigrations
+python manage.py migrate
+```
 
 ## Reference
 [1]: https://uwsgi-docs-zh.readthedocs.io/zh_CN/latest/tutorials/Django_and_nginx.html
