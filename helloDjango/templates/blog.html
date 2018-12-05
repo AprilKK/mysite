@@ -49,11 +49,13 @@
 									<li><a href="#" class="icon fa-facebook">128</a></li>
 								</ul>
 							</div>
-							<a href="#" class="image featured"><img src="/static/imagesblog/pic01.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="{% cycle '/static/imagesblog/pic01.jpg' '/static/imagesblog/pic02.jpg' %}" alt="" /></a>
 							<p>
                             {{art.content}}
 							</p>
 						</article>
+                        {% empty %}
+                            <p>there are no artical in our DB now</p>
                     {%endfor%}
 					<!-- Pagination -->
 						<div class="pagination">
