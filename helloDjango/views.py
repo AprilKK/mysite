@@ -16,6 +16,10 @@ def stable(request):
 def blog(request):
     currentPage = 1
     page = request.GET.get('page')
+    if page is not None:
+        page = int(page)
+    else:
+        page = 1
     if -1 == page:
        currentPage = currentPage +1 
     else:
