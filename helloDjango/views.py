@@ -14,5 +14,11 @@ def stable(request):
     return render(request,'home.html')
 
 def blog(request):
-    artlist = Artical.objects.all()
+    currentPage = 1
+    page = request.GET.get('page')
+    if -1 == page:
+       currentPage = currentPage +1 
+    else:
+        currentPage = page
+    artlist = Artical.objects.all()[(currentPage-1)*3:currentPage*3]
     return render(request,'blog.html',{'artlist':artlist})
