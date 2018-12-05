@@ -6,6 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
 from django.contrib import staticfiles 
+from helloDjango.models import Artical
 def index(request):
     return render(request,'index.html')
 
@@ -13,4 +14,5 @@ def stable(request):
     return render(request,'home.html')
 
 def blog(request):
-    return render(request,'blog.html')
+    artlist = Artical.objects.all()
+    return render(request,'blog.html',{'artlist':artlist})
