@@ -26,3 +26,9 @@ def blog(request):
         currentPage = page
     artlist = Artical.objects.all()[(currentPage-1)*3:currentPage*3]
     return render(request,'blog.html',{'artlist':artlist})
+
+def artical(request):
+    with open(/articals/art1.md) as f:
+        content = f.read()
+    return render(request,'artical.html',{'content':content})
+    
