@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'helloDjango',
-    'markdown-deux'
+    'markdown_deux'
 ]
 
 MIDDLEWARE = [

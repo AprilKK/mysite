@@ -28,7 +28,8 @@ def blog(request):
     return render(request,'blog.html',{'artlist':artlist})
 
 def artical(request):
-    with open(/articals/art1.md) as f:
-        content = f.read()
+   # with open('/static/articals/art1.md') as f:
+   #     content = f.read()
+    content = '##hed \n### head3'
     return render(request,'artical.html',{'content':content})
     
