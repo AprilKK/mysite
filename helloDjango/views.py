@@ -29,7 +29,16 @@ def blog(request):
     return render(request,'blog.html',{'artlist':artlist})
 
 def artical(request):
-    with open('./helloDjango/articals/Readme.md') as f:
+    artId = request.GET.get('id')
+    if artId is not None:
+        artId = int(artId)
+    else:
+        artId = 0
+    art = Artical.objects.get(articalId = artId)
+    if art is None:
+        return HttpResponse('no artical')
+    artFileName = art.fileName
+    with open('./helloDjango/articals/'+artFileName) as f:
         content = f.read()
     contentutf = unicode(content,'utf-8')
     art = markdown.markdown(contentutf,extensions = [
