@@ -8,6 +8,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import staticfiles 
 from helloDjango.models import Artical
 import markdown
+from .forms import UploadFileForm
+from helloDjango.tools.fileTools import handle_upload_file
+
 def index(request):
     return render(request,'index.html')
 
@@ -47,3 +50,20 @@ def artical(request):
         'markdown.extensions.toc',
         ])
     return render(request,'artical.html',{'content':art})
+
+def uploadFile(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST,request.FILES)
+        if form.is_valid():
+            handle_upload_file(request.FILES.get('file',None))
+            art = Artical()
+            art.title = form.cleaned_data['ArticalTitle']
+            art.subtitle = form.cleaned_data['ArticalSubtitle']
+            art.content = form.cleaned_data['ArticalAbstract']
+            art.fileName = form.name
+            art.save()
+            return HttpResponse('file uploaded sucessfully...')
+    else:
+        form = UploadFileForm()
+
+    return render(request,'uploadFile.html',{'form':form})
