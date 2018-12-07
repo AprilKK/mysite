@@ -85,6 +85,7 @@ body {
   p, blockquote, ul, ol, dl, li, table, pre {
     margin: 15px 0; }
   
+  p code, li code{color:#a74949;font-size: 14px; }
   hr {
     background: transparent url("../../images/modules/pulls/dirty-shade.png") repeat-x 0 0;
     border: 0 none;
