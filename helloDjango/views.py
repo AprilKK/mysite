@@ -54,13 +54,14 @@ def artical(request):
 def uploadFile(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST,request.FILES)
+        fileup = request.FILES.get('ArticalFileUpload',None)
         if form.is_valid():
-            handle_upload_file(request.FILES.get('file',None))
+            handle_upload_file(fileup)
             art = Artical()
-            art.title = form.cleaned_data['ArticalTitle']
+            art.title = form.cleaned_data['ArticalTitle']            
             art.subtitle = form.cleaned_data['ArticalSubtitle']
             art.content = form.cleaned_data['ArticalAbstract']
-            art.fileName = form.name
+            art.fileName = fileup.name
             art.save()
             return HttpResponse('file uploaded sucessfully...')
     else:
