@@ -38,4 +38,3 @@ def artical(request):
         'markdown.extensions.toc',
         ])
     return render(request,'artical.html',{'content':art})
-    
