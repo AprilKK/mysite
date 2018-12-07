@@ -7,8 +7,7 @@ body {
     padding-bottom: 10px;
     background-color: #fff;
     background-image: url(images/bg02.png);
-    padding-left: 20%; 
-    padding-right: 20%; 
+    max-width:65em;
     margin: auto; }
   
   body > *:first-child {
