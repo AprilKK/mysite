@@ -16,17 +16,19 @@ def index(request):
 
 def stable(request):
     return render(request,'home.html')
-
+currentPage = 1
 def blog(request):
+    global currentPage
     page = request.GET.get('page')
     if page is not None:
         page = int(page)
-        currentPage = page
+        if -1 != page:
+            currentPage = page
     else:
         page = 1
         currentPage = 1
     if -1 == page:
-       currentPage = currentPage +1 
+       currentPage = currentPage + 1 
     artlist = Artical.objects.all()[(currentPage-1)*3:currentPage*3]
     return render(request,'blog.html',{'artlist':artlist})
 
