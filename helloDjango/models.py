@@ -13,6 +13,7 @@ class Artical(models.Model):
     content = models.TextField()
     submittedDate = models.DateField(default = date.today)
     lastUpdatedDate = models.DateField(default = date.today)
+    fileName = models.CharField(default = 'art1.md', max_length = 50)
     author = models.CharField(default = 'xikong', max_length = 50)
 
 # use __str__ for python 3

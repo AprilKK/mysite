@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^dev/$',hviews.index,name='dev'),
     url(r'^blog/$',hviews.blog,name='blog'),
+    url(r'^uploadFile/$',hviews.uploadFile,name='upload'),
     url(r'^artical/$',hviews.artical,name='artical'),
     url(r'^$',hviews.stable,name='stable'),
 ]

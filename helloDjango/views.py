@@ -8,6 +8,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import staticfiles 
 from helloDjango.models import Artical
 import markdown
+from .forms import UploadFileForm
+from helloDjango.tools.fileTools import handle_upload_file
+
 def index(request):
     return render(request,'index.html')
 
@@ -28,7 +31,16 @@ def blog(request):
     return render(request,'blog.html',{'artlist':artlist})
 
 def artical(request):
-    with open('./helloDjango/articals/Readme.md') as f:
+    artId = request.GET.get('id')
+    if artId is not None:
+        artId = int(artId)
+    else:
+        artId = 0
+    art = Artical.objects.get(articalId = artId)
+    if art is None:
+        return HttpResponse('no artical')
+    artFileName = art.fileName
+    with open('./helloDjango/articals/'+artFileName) as f:
         content = f.read()
     contentutf = unicode(content,'utf-8')
     art = markdown.markdown(contentutf,extensions = [
@@ -37,3 +49,21 @@ def artical(request):
         'markdown.extensions.toc',
         ])
     return render(request,'artical.html',{'content':art})
+
+def uploadFile(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST,request.FILES)
+        fileup = request.FILES.get('ArticalFileUpload',None)
+        if form.is_valid():
+            handle_upload_file(fileup)
+            art = Artical()
+            art.title = form.cleaned_data['ArticalTitle']            
+            art.subtitle = form.cleaned_data['ArticalSubtitle']
+            art.content = form.cleaned_data['ArticalAbstract']
+            art.fileName = fileup.name
+            art.save()
+            return HttpResponse('file uploaded sucessfully...')
+    else:
+        form = UploadFileForm()
+
+    return render(request,'uploadFile.html',{'form':form})
