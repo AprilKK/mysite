@@ -66,5 +66,8 @@
 					target: $body,
 					visibleClass: 'sidebar-visible'
 				});
+			$('pagination').on('click','a',function(event) {
+				$(this).addClass('active')
+			});
 
 })(jQuery);
