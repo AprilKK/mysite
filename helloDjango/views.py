@@ -30,7 +30,7 @@ def blog(request):
     if -1 == page:
        currentPage = currentPage + 1 
     artlist = Artical.objects.all()[(currentPage-1)*3:currentPage*3]
-    return render(request,'blog.html',{'artlist':artlist})
+    return render(request,'blog.html',{'artlist':artlist,'page':currentPage})
 
 def artical(request):
     artId = request.GET.get('id')
