@@ -61,12 +61,12 @@
 						<div class="pagination">
 							<!--<a href="#" class="button previous">Previous Page</a>-->
 							<div class="pages">
-								<a href="/blog?page=1" {%if page ==1 %}class = "active" {%endif%}>1</a>
-								<a href="/blog?page=2" {%if page ==2 %}class = "active" {%endif%}>2</a>
-								<a href="/blog?page=3" {%if page ==3 %}class = "active" {%endif%}>3</a>
-								<a href="/blog?page=4" {%if page ==4 %}class = "active" {%endif%}>4</a>
+								<a href="/blog?page=1" {% if page == 1 %} class = "active" {% else %} class = null {%endif%}>1</a>
+								<a href="/blog?page=2" {% if page == 2 %} class = "active" {% else %} class = null {%endif%}>2</a>
+								<a href="/blog?page=3" {% if page == 3 %} class = "active" {% else %} class = null {%endif%}>3</a>
+								<a href="/blog?page=4" {% if page == 4 %} class = "active" {% else %} class = null {%endif%}>4</a>
 								<span>&hellip;</span>
-								<a href="/blog?page=20" {%if page ==20 %}class = "active" {%endif%}>20</a>
+								<a href="/blog?page=20" {%if page ==20 %}class = "active" {% else %} class = null {%endif%}>20</a>
 							</div>
 							<a href="/blog?page=-1" class="button next">Next Page</a>
 						</div>
